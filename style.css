@@ -1,6 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .product__content {
     margin: 20px 20px;
+}
+
+.banner {
+    width: 100%;
+    height: auto;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 
@@ -109,23 +125,12 @@
     /* border: 1px solid #000; */
 }
 
-.product__card:last-child {
-    margin-right: 0;
-}
-
 .product__card:hover {
     box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
 
 /* product badge */
-
-.product__badge {
-    right: 0px;
-    background: #dc3545;
-    color: #fff;
-    top: 0px;
-}
 
 .product__badge {
     position: absolute;
@@ -135,7 +140,10 @@
     font-size: 14px;
     z-index: 1;
     padding: 6px 4px 6px 2px;
-    top: 6px;
+    top: 0;
+    right: 0;
+    background: #dc3545;
+    color: #fff;
     line-height: 13px;
     width: 40px;
     font-weight: 700;
@@ -157,9 +165,9 @@
     content: '';
     position: absolute;
     top: 100%;
+    right: 0;
     border-left: 8px solid #dc3545;
     border-bottom: 8px solid transparent;
-    right: 0;
 }
 
 
@@ -171,13 +179,23 @@
 .product__thumbnail {
     width: 100%;
     height: auto;
+    overflow: hidden;
 }
 
 .product__thumbnail a img {
+    padding: 15px 0;
     width: 100%;
     height: 100%;
     border-radius: 5px;
     object-fit: contain;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+/* Image get zoomed while hovering on card */
+
+.product__card:hover .product__thumbnail a img {
+    transform: scale(1.1, 1.1);
 }
 
 
@@ -245,13 +263,16 @@
     border-radius: 0.2rem;
     background-color: #fff;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease-in-out;
 }
 
 .product__addBtn button:hover {
     background-color: #009245;
     color: #fff;
 }
+
+
+/* View all products button */
 
 .all__products {
     margin: 20px 0;
@@ -267,11 +288,17 @@
     transform: translateX(-50%);
     background-color: #dc3545;
     color: #fff;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
     width: auto;
     height: 2rem;
     border: none;
     border-radius: 0.2rem;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .product__addBtn button:focus,
@@ -279,6 +306,16 @@
     border: none;
     outline: none;
 }
+
+.all__products a button:hover {
+    color: #dc3545;
+    font-weight: bold;
+    border: 1px solid #dc3545;
+    background-color: #fff;
+}
+
+
+/* View all products button ends */
 
 
 /* Product add to cart button ends */
@@ -311,8 +348,17 @@
 }
 
 @media (max-width: 350px) {
+    .product__addBtn button {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 330px) {
     .product__info {
         grid-template-columns: 98.5%;
+    }
+    .product__addBtn button {
+        font-size: 12px;
     }
 }
 
